@@ -5,7 +5,9 @@ import sys
 app = Flask(__name__)
 
 # List of valid account numbers (as strings)
-valid_accounts = [str(x) for x in ["7478389", "87654321", "51655118"]]
+valid_accounts = [str(x) for x in ["7478389",            ## Mitch Test Server
+                                   "87654321", 
+                                   "51655118"]]
 
 @app.route('/')
 def home():
@@ -13,7 +15,7 @@ def home():
 
 @app.route('/validate', methods=['POST'])
 def validate():
-    account_no = request.form.get('account_no', '').strip()
+    account_no = request.form.get('account_no', '').strip().replace('\x00', '')
     
     print("🛠 Received POST request")
     sys.stdout.flush()

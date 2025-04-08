@@ -1,8 +1,11 @@
 from flask import Flask, request
 import os
+import sys
 
 app = Flask(__name__)
 
+# List of valid account numbers (as strings)
+valid_accounts = [str(x) for x in ["7478389", "87654321", "51655118"]]
 
 @app.route('/')
 def home():
@@ -11,17 +14,20 @@ def home():
 @app.route('/validate', methods=['POST'])
 def validate():
     account_no = request.form.get('account_no', '').strip()
+    
     print("🛠 Received POST request")
-    print("Account number received:", repr(account_no))
+    sys.stdout.flush()
 
-    valid_accounts = [str(x) for x in ["7478389",         ##Mitch
-                                       "87654321", 
-                                       "51655118"]]
+    print("Account number received:", repr(account_no))  # Shows hidden characters
+    sys.stdout.flush()
 
     if account_no in valid_accounts:
         print("✅ License verified for", account_no)
+        sys.stdout.flush()
         return "success"
+    
     print("❌ Invalid license for", account_no)
+    sys.stdout.flush()
     return "fail"
 
 app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))

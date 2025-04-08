@@ -3,7 +3,6 @@ import os
 
 app = Flask(__name__)
 
-valid_accounts = [str(x) for x in ["7478389", "87654321", "51655118"]]
 
 @app.route('/')
 def home():
@@ -14,6 +13,10 @@ def validate():
     account_no = request.form.get('account_no', '').strip()
     print("🛠 Received POST request")
     print("Account number received:", repr(account_no))
+
+    valid_accounts = [str(x) for x in ["7478389",         ##Mitch
+                                       "87654321", 
+                                       "51655118"]]
 
     if account_no in valid_accounts:
         print("✅ License verified for", account_no)

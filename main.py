@@ -13,7 +13,7 @@ def home():
 def validate():
     account_no = request.form.get('account_no', '').strip()
     print("🛠 Received POST request")
-    print("Account number received:", account_no)
+    print("Account number received:", repr(account_no))
 
     if account_no in valid_accounts:
         print("✅ License verified for", account_no)

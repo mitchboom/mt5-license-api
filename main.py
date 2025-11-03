@@ -9,6 +9,8 @@ valid_accounts = [str(x) for x in ["11005034",           ## Mitch Test Server
                                    "10999689",           ## Mitch VPS
                                    "200648",
                                    "660175",             ## Dave Account
+                                   "697155",             ## Dave Account
+                                   "697156",             ## Dave Account
                                    "10927180",           ## Dave Account
                                    "11047675",           ## Dave Account
                                    "10927180",           ## Dave Account
